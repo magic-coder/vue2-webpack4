@@ -38,7 +38,7 @@
    
    npm run dll             生成chuck文件，生成在build/vender-manifest.json,与vendor.dll.js
    
-   npm run build [模块名]    打包文件 如：npm run build demo 单模块打包，多模块打包：npm run dev demo,demo2,demo3..
+   npm run build [模块名]    打包文件 如：npm run build demo 单模块打包，多模块打包：npm run  demo,demo2,demo3..
    
    npm run create [模块名]  创建一个新模块 如：npm run create demo,不支持多模块创建
    
