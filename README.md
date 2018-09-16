@@ -45,3 +45,7 @@
    npm run create [模块名]  创建一个新模块 如：npm run create demo,不支持多模块创建
    
 8、框架、打包后图片自动压缩，多线程构建，css自动补全
+
+金额组件：https://github.com/wyulang/vue-webpack4/blob/master/src/app/demo/assets/money.png
+
+启动后  http://localhost:3001/demo/#/money
