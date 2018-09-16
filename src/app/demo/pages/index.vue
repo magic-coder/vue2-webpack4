@@ -7,7 +7,7 @@
 export default {
   data(){
     return{
-      value:'Hellor Word'
+      value:'Hellor Words'
     }
   }
 }

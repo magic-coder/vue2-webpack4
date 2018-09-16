@@ -8,9 +8,17 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const prConfig = config.processConfig();
+
+let conlg = [];
+
+for (let item in prConfig.entryObj) {
+  conlg.push(`Your application is running here: http://${config.dev.devServer}:${config.dev.port}/${item}/`);
+}
+
+
 let debConfig = {
   entry: prConfig.entryObj,
-	output: {
+  output: {
     path: config.dev.outPath,
     publicPath: '/',
     filename: '[name].[hash].js',
@@ -18,11 +26,11 @@ let debConfig = {
   devtool: 'eval-source-map',
   mode: 'development',
   watchOptions: {
-		ignored: /node_modules/,
-		aggregateTimeout: 300,//防止重复保存频繁重新编译,300ms内重复保存不打包
-		poll: 1000  //每秒询问的文件变更的次数
+    ignored: /node_modules/,
+    aggregateTimeout: 300,//防止重复保存频繁重新编译,300ms内重复保存不打包
+    poll: 1000  //每秒询问的文件变更的次数
   },
-  devServer:{
+  devServer: {
     contentBase: path.join(__dirname, "../build"), //网站的根目录为 根目录/dist
     port: config.dev.port, //端口改为9000
     host: 'localhost', //如果指定的host，这样同局域网的电脑或手机可以访问该网站,host的值在dos下使用ipconfig获取 
@@ -32,11 +40,15 @@ let debConfig = {
     compress: true, //压缩,
     noInfo: true,
   },
-  plugins:[
+  plugins: [
     new CleanWebpackPlugin(['./build']),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new FriendlyErrorsPlugin(),
+    new FriendlyErrorsPlugin({
+      compilationSuccessInfo: {
+        messages:conlg
+      }
+    }),
     new webpack.DllReferencePlugin({
       context: path.resolve(config.dll.path),
       manifest: require('../build/vendor-manifest.json')
@@ -44,10 +56,10 @@ let debConfig = {
   ]
 }
 
-for(item in config.processConfig().entryObj){
-  let templist=path.join(config.dev.root, `./src/app/${item}/index.html`);
-  if(!config.isFile(templist)){
-     templist=path.join(config.dev.root, `./webpack/base-template/index.html`);
+for (item in config.processConfig().entryObj) {
+  let templist = path.join(config.dev.root, `./src/app/${item}/index.html`);
+  if (!config.isFile(templist)) {
+    templist = path.join(config.dev.root, `./webpack/base-template/index.html`);
   }
   debConfig.plugins.push(
     new HtmlWebpackPlugin({
@@ -56,8 +68,8 @@ for(item in config.processConfig().entryObj){
       inject: true,
       title: 'wyulang',
       host: config.dev.distPath,
-      prod:false,
-      chunks:[item]
+      prod: false,
+      chunks: [item]
     })
   )
 }

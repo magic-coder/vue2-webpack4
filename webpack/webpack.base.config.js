@@ -66,43 +66,42 @@ module.exports = {
 				test: /\.(gif|png|jpe?g|svg)$/i,
 				use: [
 					{
-					loader: 'url-loader',
-					options: {
-						name(file) {
-							let fle = file.split('\\app\\')[1].split('\\')[0];
-							if (!fle) {
-								fle = file.split('/app/')[1].split('/')[0];
+						loader: 'url-loader',
+						options: {
+							name(file) {
+								let fle = file.split('\\app\\')[1].split('\\')[0];
+								if (!fle) {
+									fle = file.split('/app/')[1].split('/')[0];
+								}
+								return `${fle}-assets/[name].[hash].[ext]`;
+							},
+							limit: 5000, // 小于8k的图片自动转成base64格式，并且不会存在实体图片
+							// name: 'assets/[name].[hash].[ext]',
+						}
+					}, {
+						loader: 'image-webpack-loader',// 压缩图片
+						options: {
+							mozjpeg: {
+								progressive: true,
+								quality: 65
+							},
+							// optipng.enabled: false will disable optipng
+							optipng: {
+								enabled: false,
+							},
+							pngquant: {
+								quality: '65-80',
+								speed: 4
+							},
+							gifsicle: {
+								interlaced: false,
+							},
+							// the webp option will enable WEBP
+							webp: {
+								quality: 75
 							}
-							return `${fle}-assets/[name].[hash].[ext]`;
-						},
-						limit: 5000, // 小于8k的图片自动转成base64格式，并且不会存在实体图片
-						// name: 'assets/[name].[hash].[ext]',
-					}
-				},{
-					loader: 'image-webpack-loader',// 压缩图片
-					options: {
-						mozjpeg: {
-							progressive: true,
-							quality: 65
-						},
-						// optipng.enabled: false will disable optipng
-						optipng: {
-							enabled: false,
-						},
-						pngquant: {
-							quality: '65-80',
-							speed: 4
-						},
-						gifsicle: {
-							interlaced: false,
-						},
-						// the webp option will enable WEBP
-						webp: {
-							quality: 75
 						}
 					}
-				}
-				
 				]
 			},
 			{
