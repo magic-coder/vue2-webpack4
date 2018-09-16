@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <% if (htmlWebpackPlugin.options.prod) { %>
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.module%>.css">
+    <% } %>
+    <% if (!htmlWebpackPlugin.options.prod) { %>
+    <!-- <link rel="stylesheet" href="<%=htmlWebpackPlugin.options.host %>/dist/public/mint-ui.css"> -->
+    <% } %>
+</head>
+
+<body>
+    <div id="app"></div>
+    <% if (htmlWebpackPlugin.options.prod) { %>
+    <script type="text/javascript" src="<%= htmlWebpackPlugin.options.module%>.js"></script>
+    <% } %>
+    <% if (!htmlWebpackPlugin.options.prod) { %>
+    <script type="text/javascript" src=" <%= htmlWebpackPlugin.options.host %>/vendor.dll.js "></script>
+    <% } %>
+</body>
+
+</html>
