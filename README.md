@@ -8,6 +8,9 @@
 
 5、框加采用自动化模式，
 
+
+
+
 6、webpack文件说明
 
    --template 生成新模块模版，index.html 可分为生产，开发分配置
@@ -25,6 +28,10 @@
    --webpack.prod.config.js 生产配置
    
    --webpack.create.config.js 用于创建新模块， 执行后，会在src/app/文件下生成一个新模块，如demo
+   
+   
+   
+   
    
 7、构建命令使用方法
 
