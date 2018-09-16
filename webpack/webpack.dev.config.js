@@ -13,7 +13,7 @@ const chalk = require('chalk');
 let conlg = [];
 
 for (let item in prConfig.entryObj) {
-  conlg.push(chalk.yellowBright.bold(`Your application is running here: http://${config.dev.devServer}:${config.dev.port}/${item}/`));
+  conlg.push(chalk.cyan.bold('Your application is running here: ')+chalk.greenBright.bold(`http://${config.dev.devServer}:${config.dev.port}/${item}/`));
 }
 
 
