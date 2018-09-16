@@ -8,11 +8,12 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const prConfig = config.processConfig();
+const chalk = require('chalk');
 
 let conlg = [];
 
 for (let item in prConfig.entryObj) {
-  conlg.push(`Your application is running here: http://${config.dev.devServer}:${config.dev.port}/${item}/`);
+  conlg.push(chalk.yellowBright.bold(`Your application is running here: http://${config.dev.devServer}:${config.dev.port}/${item}/`));
 }
 
 
