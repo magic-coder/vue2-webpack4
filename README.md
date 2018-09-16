@@ -6,7 +6,7 @@
 
 3、框架采取公共部分，模块独立，每个模块都有各自的入口，模块之间互都是解耦的，耦合部分都是公用部分，
 
-4、框加采用了module块化 每个模块都是一个独立体，且打包后都是独立打包在四个文件[assets,build.js,index.html,build.css]
+4、框架采用了module块化 每个模块都是一个独立体，且打包后都是独立打包在四个文件[assets,build.js,index.html,build.css]
 
 5、框加采用自动化模式，
 
