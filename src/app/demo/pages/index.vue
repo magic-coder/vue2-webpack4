@@ -4,6 +4,7 @@
   </div>
 </template>
 <script>
+import api from '../../../config/webapi.js';
 export default {
   data(){
     return{

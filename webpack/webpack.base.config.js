@@ -58,6 +58,9 @@ module.exports = {
 				test: /\.js$/,
 				use: {
 					loader: 'babel-loader',
+					options: {
+						plugins: ['@babel/plugin-proposal-class-properties']
+					}
 				},
 				exclude: /node_modules/,
 				include: [process.cwd(), './src']
