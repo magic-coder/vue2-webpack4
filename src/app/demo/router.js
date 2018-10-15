@@ -1,6 +1,7 @@
 
 import index from './pages/index.vue';
 import money from './pages/money.vue';
+import pdf from './pages/pdf.vue';
 
 import Vue from 'vue';
 import Router from 'vue-router';
@@ -24,5 +25,14 @@ export default new Router({
             index: 1,
             title: "数字虚拟键盘"
         }
-    }]
+    },
+    {
+        path: '/pdf',
+        component: pdf,
+        meta: {
+            index: 1,
+            title: "数字虚拟键盘"
+        }
+    }
+    ]
 })

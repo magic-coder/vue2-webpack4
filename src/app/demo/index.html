@@ -18,9 +18,11 @@
     <div id="app"></div>
     <% if (htmlWebpackPlugin.options.prod) { %>
     <script type="text/javascript" src="<%= htmlWebpackPlugin.options.module%>.js"></script>
+    <script type="text/javascript" src="../pdf/pdf.js "></script>
     <% } %>
     <% if (!htmlWebpackPlugin.options.prod) { %>
     <script type="text/javascript" src=" <%= htmlWebpackPlugin.options.host %>/vendor.dll.js "></script>
+    <script type="text/javascript" src=" <%= htmlWebpackPlugin.options.host %>/pdf/pdf.js "></script>
     <% } %>
 </body>
 

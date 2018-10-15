@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    {{value}}
+    {{value}}fa
   </div>
 </template>
 <script>

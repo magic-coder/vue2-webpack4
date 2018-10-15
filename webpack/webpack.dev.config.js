@@ -10,6 +10,7 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const prConfig = config.processConfig();
 const chalk = require('chalk');
 
+
 let conlg = [];
 
 for (let item in prConfig.entryObj) {
@@ -40,6 +41,9 @@ let debConfig = {
     stats: "errors-only",
     compress: true, //压缩,
     noInfo: true,
+    before:(app)=>{
+      
+    }
   },
   plugins: [
     new CleanWebpackPlugin(['./build']),
