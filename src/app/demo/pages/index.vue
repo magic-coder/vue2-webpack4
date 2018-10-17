@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    {{value}}fa
+    {{value}}faefafea
   </div>
 </template>
 <script>
@@ -13,7 +13,7 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="scss">
 .index{
   display: flex;
   align-items: center;

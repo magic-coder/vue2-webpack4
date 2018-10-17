@@ -1,9 +1,16 @@
 const webpack = require("webpack")
 var config = require("./webpack.dev.config.js");
 var WebpackDevServer = require('webpack-dev-server');
+const webCfg = require("./config.js");
+
+var hotConfig = [
+    '' +
+    'webpack-dev-server/client?http://' + webCfg.dev.devServer + ':' + webCfg.dev.port,
+    'webpack/hot/dev-server'
+]
 
 for (let item in config.entry) {
-    config.entry[item] = ["webpack-dev-server/client?http://localhost:3001/", "webpack/hot/dev-server"].concat(config.entry[item])
+    config.entry[item] = hotConfig.concat(config.entry[item])
 }
 
 var compiler = webpack(config);
@@ -13,4 +20,4 @@ var server = new WebpackDevServer(compiler, {
     hot: true,
     noInfo: true
 });
-server.listen(3001);
+server.listen(webCfg.dev.port);

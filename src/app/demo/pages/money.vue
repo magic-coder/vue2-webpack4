@@ -39,7 +39,7 @@ export default {
   }
 };
 </script>
-<style lang="less">
+<style lang="sass">
 .hell {
   height: 100%;
   width: 100%;
