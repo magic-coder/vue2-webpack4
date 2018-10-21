@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const config = require('../webpack/config.js');
+const config = require('../webpack/webpack.config.js');
 var merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.config.js');
 module.exports = merge(baseWebpackConfig, {
@@ -16,16 +16,16 @@ module.exports = merge(baseWebpackConfig, {
     },
     mode: "production",
     output: {
-        path: path.resolve(config.dll.path),
+        path: path.resolve(config.config.outPath),
         filename: '[name].dll.js',
         library: '[name]_library',
         publicPath: '/build/',
     },
     plugins: [
         new webpack.DllPlugin({
-            path: path.join(config.dll.path, '[name]-manifest.json'),
+            path: path.join(config.config.outPath, '[name]-manifest.json'),
             name: '[name]_library',
-            context: path.resolve(config.dll.path)
+            context: path.resolve(config.config.outPath)
         })
     ]
 });

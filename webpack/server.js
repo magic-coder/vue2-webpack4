@@ -1,11 +1,11 @@
 const webpack = require("webpack")
 var config = require("./webpack.dev.config.js");
 var WebpackDevServer = require('webpack-dev-server');
-const webCfg = require("./config.js");
+const webCfg = require("./webpack.config.js");
 
 var hotConfig = [
     '' +
-    'webpack-dev-server/client?http://' + webCfg.dev.devServer + ':' + webCfg.dev.port,
+    'webpack-dev-server/client?http://' + webCfg.config.devServer + ':' + webCfg.config.port,
     'webpack/hot/dev-server'
 ]
 
@@ -18,6 +18,7 @@ var server = new WebpackDevServer(compiler, {
     contentBase: 'build/',
     publicPath: "/",
     hot: true,
-    noInfo: true
+    noInfo: true,
+    host: '0.0.0.0'
 });
-server.listen(webCfg.dev.port);
+server.listen(webCfg.config.port, '0.0.0.0');

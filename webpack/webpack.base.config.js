@@ -1,14 +1,13 @@
 const path = require("path");
-const config = require('../webpack/config.js');
+const config = require('../webpack/webpack.config.js');
 const webpack = require('webpack');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const prConfig = config.processConfig();
 
 module.exports = {
     resolve: {
         alias: {
-            'lib': path.join(config.dev.root, 'lib/'),
+            'lib': path.join(config.config.root, 'lib/'),
             'vue$': 'vue/dist/vue.esm.js',
         },
         modules: ['node_modules', '.'],
@@ -18,7 +17,7 @@ module.exports = {
         rules: [{
                 test: /\.css$/,
                 use: [
-                    prConfig.isDevLoader, {
+                    config.config.vueLoader, {
                         loader: "css-loader"
                     }, {
                         loader: "postcss-loader"
@@ -28,7 +27,7 @@ module.exports = {
             {
                 test: /\.less$/,
                 use: [
-                    prConfig.isDevLoader, {
+                    config.config.vueLoader, {
                         loader: "css-loader"
                     }, {
                         loader: "less-loader"
@@ -40,7 +39,7 @@ module.exports = {
             {
                 test: /\.sass$/,
                 use: [
-                    prConfig.isDevLoader, {
+                    config.config.vueLoader, {
                         loader: "css-loader"
                     }, {
                         loader: "sass-loader"
@@ -52,7 +51,7 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    prConfig.isDevLoader, {
+                    config.config.vueLoader, {
                         loader: "css-loader"
                     }, {
                         loader: "sass-loader"
