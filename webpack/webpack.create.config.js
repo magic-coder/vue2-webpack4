@@ -1,6 +1,7 @@
 const config = require('./webpack.config.js');
 const inquirer = require('inquirer');
 const chalk = require('chalk');
+const fs = require('fs-extra');
 
 let clientItem = process.argv[2];
 let entryPath = config.config.entry + '\\' + clientItem;
